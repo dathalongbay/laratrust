@@ -162,4 +162,4 @@ Route::get("/orm3", function () {
     dump($post->name);
 });
 
-// https://laravel.com/docs/8.x/eloquent
+// https://laravel.com/docs/8.x/eloquent thêm , sửa , xóa ...
