@@ -131,3 +131,35 @@ Route::get("/db13", function () {
 });
 
 // đọc thêm các vi dụ thêm , sửa , xóa ... trong https://laravel.com/docs/8.x/queries
+use App\Models\Post;
+Route::get("/orm1", function () {
+    $posts1 = DB::table('posts')->get();
+    dump($posts1);
+    $posts = Post::all();
+    dump($posts);
+
+    foreach($posts as $post) {
+        echo "<p>$post->name</p>";
+    }
+    dump($posts->toArray());
+});
+
+Route::get("/orm2", function () {
+
+    $posts = Post::where("name", "Post 1")->get();
+    dump($posts);
+
+    foreach($posts as $post) {
+        echo "<p>$post->name</p>";
+    }
+    dump($posts->toArray());
+});
+
+Route::get("/orm3", function () {
+
+    $post = Post::findOrFail(3);
+    dump($post);
+    dump($post->name);
+});
+
+// https://laravel.com/docs/8.x/eloquent
