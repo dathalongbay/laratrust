@@ -163,3 +163,34 @@ Route::get("/orm3", function () {
 });
 
 // https://laravel.com/docs/8.x/eloquent thêm , sửa , xóa ...
+
+// https://www.itsolutionstuff.com/post/laravel-one-to-one-eloquent-relationship-tutorialexample.html
+use App\Models\User;
+use App\Models\Phone;
+Route::get("/relation1", function () {
+
+    $user = User::find(1);
+
+    $phone = new Phone();
+    $phone->phone = '9429343852';
+
+    $user->phone()->save($phone);
+});
+
+Route::get("/relation2", function () {
+
+    $user1 = User::find(1);
+    $phone = $user1->phone;
+    dump($phone);
+    echo $phone->phone;
+});
+Route::get("/relation3", function () {
+
+    // tìm người nào đang dùng số điện thoại có id là 1
+    $phone1 = Phone::find(1);
+    $user = $phone1->user;
+    dump($user);
+    echo $user->email;
+});
+
+
