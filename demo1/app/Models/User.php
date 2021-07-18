@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
+use App\Models\RoleCompany;
 
 class User extends Authenticatable
 {
@@ -51,5 +52,11 @@ class User extends Authenticatable
     public function phone()
     {
         return $this->hasOne('App\Models\Phone');
+    }
+
+
+    public function rolesCompany()
+    {
+        return $this->belongsToMany(RoleCompany::class, 'company_role_user', 'user_id', 'company_role_id');
     }
 }

@@ -206,4 +206,18 @@ Route::get("/relation5", function () {
     dd($comment1->post->toArray());
 });
 
+Route::get("/relation6", function () {
+
+    $user1 = User::find(1);
+
+    dd($user1->rolesCompany->toArray());
+});
+
+Route::get("/relation7", function () {
+
+    $companyRole2 = \App\Models\RoleCompany::find(2);
+
+    dd($companyRole2->users->toArray());
+});
+
 
