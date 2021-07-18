@@ -194,3 +194,16 @@ Route::get("/relation3", function () {
 });
 
 
+Route::get("/relation4", function () {
+
+    $post1 = Post::find(1);
+    dd($post1->comments123->toArray());
+});
+
+Route::get("/relation5", function () {
+
+    $comment1 = \App\Models\Comment::find(1);
+    dd($comment1->post->toArray());
+});
+
+
